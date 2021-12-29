@@ -13,7 +13,8 @@ from utils.callbacks import LossHistory
 from utils.dataloader import YoloDataset, yolo_dataset_collate
 from utils.utils import get_anchors, get_classes
 from utils.utils_fit import fit_one_epoch
-
+import os
+print(os.getcwd())
 '''
 训练自己的目标检测模型一定需要注意以下几点：
 1、训练前仔细检查自己的格式是否满足要求，该库要求数据集格式为VOC格式，需要准备好的内容有输入图片和标签
@@ -40,12 +41,12 @@ if __name__ == "__main__":
     #--------------------------------------------------------#
     #   训练前一定要修改classes_path，使其对应自己的数据集
     #--------------------------------------------------------#
-    classes_path    = './yolo3-pytorch/model_data/voc_classes.txt'
+    classes_path    = 'yolo3-pytorch/model_data/voc_classes.txt'
     #---------------------------------------------------------------------#
     #   anchors_path代表先验框对应的txt文件，一般不修改。
     #   anchors_mask用于帮助代码找到对应的先验框，一般不修改。
     #---------------------------------------------------------------------#
-    anchors_path    = './yolo3-pytorch/model_data/yolo_anchors.txt'
+    anchors_path    = 'yolo3-pytorch/model_data/yolo_anchors.txt'
     anchors_mask    = [[6, 7, 8], [3, 4, 5], [0, 1, 2]]
     #----------------------------------------------------------------------------------------------------------------------------#
     #   权值文件的下载请看README，可以通过网盘下载。模型的 预训练权重 对不同数据集是通用的，因为特征是通用的。
@@ -64,7 +65,7 @@ if __name__ == "__main__":
     #   网络一般不从0开始训练，至少会使用主干部分的权值，有些论文提到可以不用预训练，主要原因是他们 数据集较大 且 调参能力优秀。
     #   如果一定要训练网络的主干部分，可以了解imagenet数据集，首先训练分类模型，分类模型的 主干部分 和该模型通用，基于此进行训练。
     #----------------------------------------------------------------------------------------------------------------------------#
-    model_path      = './yolo3-pytorch/model_data/yolo_weights.pth'
+    model_path      = 'yolo3-pytorch/model_data/yolo_weights.pth'
     #------------------------------------------------------#
     #   输入的shape大小，一定要是32的倍数
     #------------------------------------------------------#
@@ -105,8 +106,8 @@ if __name__ == "__main__":
     #----------------------------------------------------#
     #   获得图片路径和标签
     #----------------------------------------------------#
-    train_annotation_path   = './yolo3-pytorch/2007_train.txt'
-    val_annotation_path     = './yolo3-pytorch/2007_val.txt'
+    train_annotation_path   = 'yolo3-pytorch/2007_train.txt'
+    val_annotation_path     = 'yolo3-pytorch/2007_val.txt'
 
     #----------------------------------------------------#
     #   获取classes和anchor
